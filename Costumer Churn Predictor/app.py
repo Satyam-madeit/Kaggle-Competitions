@@ -129,6 +129,7 @@ with st.form("customer_profile"):
     with form_left:
         with st.container(border=True):
             st.markdown('<div class="card-title"><span>👤</span>Demographics</div>', unsafe_allow_html=True)
+            gender = st.selectbox("Gender", ["Female", "Male"])
             senior = st.selectbox("Senior Citizen", ["No", "Yes"])
             partner = st.selectbox("Partner", ["Yes", "No"])
             dependents = st.selectbox("Dependents", ["Yes", "No"])
@@ -159,7 +160,7 @@ with st.form("customer_profile"):
 
 if predict_clicked:
     row = pd.DataFrame([{
-        "SeniorCitizen": 1 if senior == "Yes" else 0, "Partner": partner, "Dependents": dependents, "tenure": tenure,
+        "gender": gender, "SeniorCitizen": 1 if senior == "Yes" else 0, "Partner": partner, "Dependents": dependents, "tenure": tenure,
         "PhoneService": phone_service, "MultipleLines": multiple_lines, "InternetService": internet_service,
         "OnlineSecurity": online_security, "OnlineBackup": online_backup, "DeviceProtection": device_protection,
         "TechSupport": tech_support, "StreamingTV": streaming_tv, "StreamingMovies": streaming_movies,
@@ -203,4 +204,4 @@ if predict_clicked:
 
     st.markdown('<div style="height:1.25rem"></div>', unsafe_allow_html=True)
     st.markdown('<div class="result-card"><div class="result-overline">Customer summary</div><div class="result-title">Profile at a glance</div><div class="summary-grid">' +
-                f'<div class="summary-item"><small>TENURE</small><strong>{tenure} months</strong></div><div class="summary-item"><small>INTERNET SERVICE</small><strong>{internet_service}</strong></div><div class="summary-item"><small>CONTRACT</small><strong>{contract}</strong></div><div class="summary-item"><small>PAYMENT METHOD</small><strong>{payment_method}</strong></div><div class="summary-item"><small>MONTHLY CHARGES</small><strong>${monthly_charges:,.2f}</strong></div><div class="summary-item"><small>TOTAL CHARGES</small><strong>${total_charges:,.2f}</strong></div><div class="summary-item"><small>PAPERLESS BILLING</small><strong>{paperless_billing}</strong></div><div class="summary-item"><small>PHONE SERVICE</small><strong>{phone_service}</strong></div></div></div>', unsafe_allow_html=True)
+                f'<div class="summary-item"><small>GENDER</small><strong>{gender}</strong></div><div class="summary-item"><small>TENURE</small><strong>{tenure} months</strong></div><div class="summary-item"><small>INTERNET SERVICE</small><strong>{internet_service}</strong></div><div class="summary-item"><small>CONTRACT</small><strong>{contract}</strong></div><div class="summary-item"><small>PAYMENT METHOD</small><strong>{payment_method}</strong></div><div class="summary-item"><small>MONTHLY CHARGES</small><strong>${monthly_charges:,.2f}</strong></div><div class="summary-item"><small>TOTAL CHARGES</small><strong>${total_charges:,.2f}</strong></div><div class="summary-item"><small>PAPERLESS BILLING</small><strong>{paperless_billing}</strong></div><div class="summary-item"><small>PHONE SERVICE</small><strong>{phone_service}</strong></div></div></div>', unsafe_allow_html=True)
