@@ -1,4 +1,6 @@
 streamlit
 pandas
-pickle
+numpy
+scikit-learn
+xgboost
 plotly
